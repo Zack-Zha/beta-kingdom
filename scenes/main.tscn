@@ -716,3 +716,5 @@ y_sort_enabled = true
 
 [node name="Player" parent="Entities" unique_id=2074981039 groups=["player"] instance=ExtResource("2_0wfyh")]
 position = Vector2(165, 112)
+
+[node name="Effects" type="Node2D" parent="."]

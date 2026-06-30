@@ -76,9 +76,14 @@ func shoot_projectile(target: Node2D):
 		return
 
 	var projectile = projectile_scene.instantiate()
-	get_parent().add_child(projectile)
+
+	var effects = get_tree().current_scene.get_node_or_null("Effects")
+	if effects:
+		effects.add_child(projectile)
+	else:
+		get_parent().add_child(projectile)
 
 	projectile.global_position = global_position
 
 	var shoot_direction := target.global_position - global_position
-	projectile.setup(shoot_direction)
+	projectile.setup(shoot_direction, target)
