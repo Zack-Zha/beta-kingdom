@@ -40,3 +40,9 @@ func is_player_in_attack_range() -> bool:
 			return true
 
 	return false
+
+func die():
+	if is_queued_for_deletion():
+		return
+	collision_layer = 0
+	queue_free()
