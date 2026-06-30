@@ -92,6 +92,7 @@ animations = [{
 size = Vector2(64, 76)
 
 [node name="Player" type="CharacterBody2D" unique_id=2074981039]
+scale = Vector2(0.5, 0.5)
 collision_mask = 0
 script = ExtResource("1_g2els")
 projectile_scene = ExtResource("2_dqkch")
@@ -99,7 +100,7 @@ projectile_scene = ExtResource("2_dqkch")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=88975491]
 sprite_frames = SubResource("SpriteFrames_g4v7s")
 animation = &"idle"
-frame_progress = 0.35664347
+frame_progress = 0.2249751
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1293432098]
 

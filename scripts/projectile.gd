@@ -1,10 +1,11 @@
 extends Area2D
 
 @export var start_speed: float = 40.0
-@export var max_speed: float = 850.0
+@export var max_speed: float = 500.0
 @export var acceleration_time: float = 0.18
 @export var lifetime: float = 2.0
 @export var explosion_scene: PackedScene
+@export var damage: int = 1
 
 var direction: Vector2 = Vector2.RIGHT
 var target: Node2D
@@ -50,7 +51,9 @@ func update_rotation():
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
 		spawn_explosion()
-		if body.has_method("die"):
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+		elif body.has_method("die"):
 			body.die()
 		queue_free()
 
