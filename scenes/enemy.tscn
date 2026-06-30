@@ -2,7 +2,24 @@
 
 [ext_resource type="Script" uid="uid://c0ioapktmhaih" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://dtspp7ci7owd7" path="res://assets/enemies/basic/enemy_idle.png" id="2_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://cfik15h7kkg45" path="res://assets/enemies/basic/Pawn_Interact Knife.png" id="2_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://16k5twk3xrv2" path="res://assets/enemies/basic/enemy_run.png" id="3_c4w8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pwtc"]
+atlas = ExtResource("2_c4w8v")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rogs8"]
+atlas = ExtResource("2_c4w8v")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrm80"]
+atlas = ExtResource("2_c4w8v")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6awcb"]
+atlas = ExtResource("2_c4w8v")
+region = Rect2(576, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
 atlas = ExtResource("2_5uy6h")
@@ -64,6 +81,23 @@ region = Rect2(960, 0, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2pwtc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rogs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrm80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6awcb")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xwavj")
 }, {
 "duration": 1.0,
@@ -115,10 +149,28 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 43.185646
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
+size = Vector2(72, 79)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1734781966]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1156881753]
 sprite_frames = SubResource("SpriteFrames_8tegq")
-animation = &"run"
-frame_progress = 0.7572214
+animation = &"attack"
+frame_progress = 0.96660227
+
+[node name="AttackRange" type="Area2D" parent="." unique_id=1045230585]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" unique_id=1297264895]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1775347181]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_5uy6h")
