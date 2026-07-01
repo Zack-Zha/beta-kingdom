@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dnceveddq27ls" path="res://assets/terrain/Tilemap_color1.png" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://d2hnj03dwyjew" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://0pa116jusjak" path="res://scenes/enemy.tscn" id="2_sugp2"]
-[ext_resource type="Script" uid="uid://8bb4cd6cf9ae4" path="res://scripts/enemy_spawner.gd" id="3_spwnr"]
+[ext_resource type="Script" uid="uid://d2uigx6bgby8" path="res://scripts/enemy_spawner.gd" id="3_spwnr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("1_o5qli")
@@ -714,12 +714,13 @@ tile_set = SubResource("TileSet_g4v7s")
 y_sort_enabled = true
 
 [node name="Enemy" parent="Entities" unique_id=1734781966 instance=ExtResource("2_sugp2")]
+position = Vector2(-344, -154)
 
 [node name="Player" parent="Entities" unique_id=2074981039 groups=["player"] instance=ExtResource("2_0wfyh")]
 position = Vector2(165, 112)
 
-[node name="Effects" type="Node2D" parent="."]
+[node name="Effects" type="Node2D" parent="." unique_id=548201551]
 
-[node name="EnemySpawner" type="Node2D" parent="."]
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=886113881]
 script = ExtResource("3_spwnr")
 enemy_scene = ExtResource("2_sugp2")
